@@ -1,39 +1,13 @@
 #![allow(unused)]
 
 mod disks;
-
+mod memory;
 
 use human_bytes::human_bytes;
 use neon::prelude::*;
 use sysinfo::{System, SystemExt, DiskExt};
 use disks::{DiskSys, disktype, vec_to_array_disk};
-
-struct Memory{
-  total_memory: String,
-  free_memory: String,
-  available_memory: String,
-  used_memory: String
-}
-
-impl Memory{
-  fn to_object<'a>(&self, cx: &mut impl Context<'a>) -> JsResult<'a ,JsObject>{
-    let obj = cx.empty_object();
-
-    let total_memory = cx.string(&self.total_memory);
-    obj.set(cx, "totalMemory", total_memory);
-
-    let free_memory = cx.string(&self.free_memory);
-    obj.set(cx, "freeMemory", free_memory);
-
-    let available_memory = cx.string(&self.available_memory);
-    obj.set(cx, "availableMemory", available_memory);
-
-    let used_memory = cx.string(&self.used_memory);
-    obj.set(cx, "usedMemory", used_memory);
-
-    Ok(obj)
-  }
-}
+use memory::Memory;
 
 fn vec_to_array<'a>(vec: &Vec<String>, cx: &mut impl Context<'a>) -> JsResult<'a, JsArray>{
   let a = JsArray::new(cx, vec.len() as u32);
