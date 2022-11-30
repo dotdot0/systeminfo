@@ -1,9 +1,13 @@
-const mem = require("./index");
+const sys = require("./index");
 
-console.log(mem.memoryInfo);
+console.log(sys.memoryInfo);
 
-console.log(mem.uptime);
+console.log(sys.uptime);
 
-console.log(mem.disks);
+console.log(sys.disks);
 
-console.log(mem.physicalCoreCount());
+console.log(sys.physicalCoreCount());
+
+console.log(sys.systemName());
+
+console.log(sys.kernelVersion());
