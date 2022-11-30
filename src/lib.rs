@@ -2,12 +2,14 @@
 
 mod disks;
 mod memory;
+mod functions;
 
 use human_bytes::human_bytes;
 use neon::prelude::*;
 use sysinfo::{System, SystemExt, DiskExt};
 use disks::{DiskSys, disktype, vec_to_array_disk};
 use memory::Memory;
+use functions::get_cpu_physical_core_count;
 
 fn vec_to_array<'a>(vec: &Vec<String>, cx: &mut impl Context<'a>) -> JsResult<'a, JsArray>{
   let a = JsArray::new(cx, vec.len() as u32);
@@ -50,5 +52,6 @@ fn main(mut cx: ModuleContext) -> NeonResult<()>{
   cx.export_value("memoryInfo", memory_obj);
   cx.export_value("uptime", uptime);
   cx.export_value("disks", disks_info);
+  cx.export_function("physicalCoreCount", get_cpu_physical_core_count)?;
   Ok(())
 }

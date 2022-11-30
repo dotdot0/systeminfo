@@ -14,5 +14,7 @@ systeminfo/
 ├── package.json
 ├── src/
 |   └── lib.rs
+        └── disks.rs
+        └── memory.rs
 └── target/
 ```
