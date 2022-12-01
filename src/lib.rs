@@ -9,7 +9,7 @@ use neon::prelude::*;
 use sysinfo::{System, SystemExt, DiskExt};
 use disks::{DiskSys, disktype, vec_to_array_disk};
 use memory::Memory;
-use functions::{get_cpu_physical_core_count, system_name, kernel_v};
+use functions::{get_cpu_physical_core_count, host_name, kernel_v, long_os_v};
 
 
 fn vec_to_array<'a>(vec: &Vec<String>, cx: &mut impl Context<'a>) -> JsResult<'a, JsArray>{
@@ -57,7 +57,8 @@ fn main(mut cx: ModuleContext) -> NeonResult<()>{
 
   //Import as javascript version
   cx.export_function("physicalCoreCount", get_cpu_physical_core_count)?;
-  cx.export_function("systemName", system_name)?;
+  cx.export_function("systemName", host_name)?;
   cx.export_function("kernelVersion", kernel_v)?;
+  cx.export_function("osVersion", long_os_v)?;
   Ok(())
 }

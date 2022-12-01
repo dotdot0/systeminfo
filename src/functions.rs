@@ -9,7 +9,7 @@ pub fn get_cpu_physical_core_count(mut cx: FunctionContext) -> JsResult<JsNumber
 }
 
 //Returns the system name
-pub fn system_name(mut cx: FunctionContext) -> JsResult<JsString>{
+pub fn host_name(mut cx: FunctionContext) -> JsResult<JsString>{
   let system = System::new_all();
   let name = cx.string(system.name().unwrap());
   Ok(name)
@@ -18,5 +18,11 @@ pub fn system_name(mut cx: FunctionContext) -> JsResult<JsString>{
 pub fn kernel_v(mut cx: FunctionContext) -> JsResult<JsString>{
   let system = System::new_all();
   let version = cx.string(system.kernel_version().unwrap());
+  Ok(version)
+}
+
+pub fn long_os_v(mut cx: FunctionContext) -> JsResult<JsString>{
+  let system = System::new_all();
+  let version = cx.string(system.long_os_version().unwrap());
   Ok(version)
 }
