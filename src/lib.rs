@@ -1,15 +1,13 @@
 #![allow(unused)]
 
-mod disks;
-mod memory;
-mod functions;
+mod utils;
 
 use human_bytes::human_bytes;
 use neon::prelude::*;
 use sysinfo::{System, SystemExt, DiskExt};
-use disks::{DiskSys, disktype, vec_to_array_disk};
-use memory::Memory;
-use functions::{get_cpu_physical_core_count, host_name, kernel_v, long_os_v};
+use utils::disks::{DiskSys, disktype, vec_to_array_disk};
+use utils::memory::Memory;
+use utils::functions::{get_cpu_physical_core_count, host_name, kernel_v, long_os_v};
 
 
 fn vec_to_array<'a>(vec: &Vec<String>, cx: &mut impl Context<'a>) -> JsResult<'a, JsArray>{

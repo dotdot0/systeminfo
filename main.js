@@ -11,3 +11,5 @@ console.log(sys.physicalCoreCount());
 console.log(sys.systemName());
 
 console.log(sys.kernelVersion());
+
+console.log(sys.osVersion());
