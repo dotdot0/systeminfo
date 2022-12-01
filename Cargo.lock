@@ -293,6 +293,7 @@ dependencies = [
  "compound_duration",
  "human_bytes",
  "neon",
+ "neon-build",
  "num_cpus",
  "sysinfo",
 ]

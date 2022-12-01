@@ -15,12 +15,14 @@ pub fn host_name(mut cx: FunctionContext) -> JsResult<JsString>{
   Ok(name)
 }
 
+//Returns the kernel version
 pub fn kernel_v(mut cx: FunctionContext) -> JsResult<JsString>{
   let system = System::new_all();
   let version = cx.string(system.kernel_version().unwrap());
   Ok(version)
 }
 
+//Returns the os version
 pub fn long_os_v(mut cx: FunctionContext) -> JsResult<JsString>{
   let system = System::new_all();
   let version = cx.string(system.long_os_version().unwrap());

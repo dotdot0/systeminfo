@@ -44,7 +44,10 @@ fn main(mut cx: ModuleContext) -> NeonResult<()>{
     used_memory: human_bytes(system.used_memory() as f64)
   };
 
+  //Uptime of the system
   let uptime = cx.string(compound_duration::format_dhms(system.uptime()));
+  //Time when the the system first booted
+  let boot_time = cx.string(compound_duration::format_dhms(system.boot_time()));
 
   let memory_obj = memory_info.to_object(&mut cx)?;
 
@@ -52,6 +55,7 @@ fn main(mut cx: ModuleContext) -> NeonResult<()>{
   cx.export_value("memoryInfo", memory_obj);
   cx.export_value("uptime", uptime);
   cx.export_value("disks", disks_info);
+  cx.export_value("bootTime", boot_time);
 
   //Import as javascript version
   cx.export_function("physicalCoreCount", get_cpu_physical_core_count)?;
