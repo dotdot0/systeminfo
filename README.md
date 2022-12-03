@@ -2,7 +2,7 @@
 ### A npm module used to get system's information
 ### Based on sysinfo crate
 
-> **_NOTE:_**  Please Install Rust on your system before installing the module
+> **_NOTE:_**  Please Install Rust on your system before installing the module(https://www.rust-lang.org/tools/install)
 
 ### Functions Available: 
 > **_NOTE:_** ECMAScript modules not supported
