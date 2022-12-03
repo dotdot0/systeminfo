@@ -1,3 +1,3 @@
 pub mod disks;
-pub mod memory;
 pub mod functions;
+pub mod memory;

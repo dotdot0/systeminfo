@@ -1,15 +1,8 @@
-const sys = require("./index");
+const {osVersion, disks, memory, uptime, bootTime} = require("./lib/index")
 
-console.log(sys.memoryInfo);
 
-console.log(sys.uptime);
-
-console.log(sys.disks);
-
-console.log(sys.physicalCoreCount());
-
-console.log(sys.systemName());
-
-console.log(sys.kernelVersion());
-
-console.log(sys.osVersion());
+console.log(osVersion());
+console.log(disks());
+console.log(memory());
+console.log(uptime());
+console.log(bootTime());

@@ -2,7 +2,12 @@
   "name": "systeminfo",
   "version": "0.1.0",
   "description": "",
-  "main": "index.node",
+  "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pratushrai0309/systeminfo"
+  },
+  "type": "commonjs",
   "scripts": {
     "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
     "build-debug": "npm run build --",
@@ -10,9 +15,12 @@
     "install": "npm run build-release",
     "test": "cargo test"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Pratush Rai <pratushrai0309@gmail.com>",
+  "license": "MIT",
   "devDependencies": {
     "cargo-cp-artifact": "^0.1"
+  },
+  "dependencies": {
+    "neon-cli": "^0.10.1"
   }
 }
