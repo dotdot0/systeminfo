@@ -1,19 +1,26 @@
 {
-  "name": "systeminfo",
-  "version": "0.1.0",
-  "description": "",
+  "name": "@pratushrai0309/systeminfo",
+  "version": "0.1.2",
+  "description": "> **_NOTE:_**  Please Install Rust on your system before installing the module(https://www.rust-lang.org/tools/install)",
   "main": "lib/index.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pratushrai0309/systeminfo"
+    "url": "git+https://github.com/pratushrai0309/systeminfo.git"
   },
   "type": "commonjs",
   "scripts": {
-    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
+    "build": "neon build",
     "build-debug": "npm run build --",
-    "build-release": "npm run build -- --release",
-    "install": "npm run build-release",
-    "test": "cargo test"
+    "build-release": "neon build -- --release",
+    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
+    "package": "node-pre-gyp package",
+    "upload-binary": "npm run build-release && node-pre-gyp package && node-pre-gyp-github publish",
+    "version": "npm run build-release"
+  },
+  "binary":{
+    "module_name": "index",
+    "host": "https://github.com/pratushrai0309/systeminfo/releases/download/",
+    "module_path": "."
   },
   "author": "Pratush Rai <pratushrai0309@gmail.com>",
   "license": "MIT",
@@ -21,6 +28,15 @@
     "cargo-cp-artifact": "^0.1"
   },
   "dependencies": {
-    "neon-cli": "^0.10.1"
+    "neon-cli": "^0.10.1",
+    "node-pre-gyp": "^0.17.0",
+    "node-pre-gyp-github": "^1.4.4"
+  },
+  "bugs": {
+    "url": "https://github.com/pratushrai0309/systeminfo/issues"
+  },
+  "homepage": "https://github.com/pratushrai0309/systeminfo#readme",
+  "directories": {
+    "lib": "lib"
   }
 }
