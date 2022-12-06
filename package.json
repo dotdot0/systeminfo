@@ -9,28 +9,17 @@
   },
   "type": "commonjs",
   "scripts": {
-    "build": "neon build",
+    "build": "cargo-cp-artifact -nc index.node -- cargo build --message-format=json-render-diagnostics",
     "build-debug": "npm run build --",
-    "build-release": "neon build -- --release",
-    "install": "node-pre-gyp install --fallback-to-build=false || neon build",
-    "package": "node-pre-gyp package",
-    "upload-binary": "npm run build-release && node-pre-gyp package && node-pre-gyp-github publish",
-    "version": "npm run build-release"
-  },
-  "binary":{
-    "module_name": "index",
-    "host": "https://github.com/pratushrai0309/systeminfo/releases/download/",
-    "module_path": "."
+    "build-release": "npm run build -- --release",
+    "install": "npm run build-release",
+    "test": "cargo test" 
   },
   "author": "Pratush Rai <pratushrai0309@gmail.com>",
   "license": "MIT",
-  "devDependencies": {
-    "cargo-cp-artifact": "^0.1"
-  },
   "dependencies": {
-    "neon-cli": "^0.10.1",
-    "node-pre-gyp": "^0.17.0",
-    "node-pre-gyp-github": "^1.4.4"
+    "cargo-cp-artifact": "^0.1.7",
+    "neon-cli": "^0.10.1"
   },
   "bugs": {
     "url": "https://github.com/pratushrai0309/systeminfo/issues"
